@@ -4,12 +4,24 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   MyApp({super.key});
 
+  @override
+  State<StatefulWidget> createState() {
+    return MyAppState();
+  }
+}
+
+class MyAppState extends State<MyApp> {
   var questions = ['aaaa', 'bbbbb'];
 
+  var title = "Application Title A";
+
   void changeTitle() {
+    setState(() {
+      title = "Application B~~~";
+    });
     print('dsadsadsa');
   }
 
@@ -19,7 +31,7 @@ class MyApp extends StatelessWidget {
       //home: Text('Hello!'),
       home: Scaffold(
           appBar: AppBar(
-            title: Text('My First App'),
+            title: Text(title),
           ),
           body: Column(
             children: [
