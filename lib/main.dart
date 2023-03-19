@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'question.dart';
+import 'answer.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,6 +27,13 @@ class MyAppState extends State<MyApp> {
     print('dsadsadsa');
   }
 
+  void changeTitleA() {
+    setState(() {
+      title = "Application A~~~";
+    });
+    print('dsadsadsa');
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,13 +47,17 @@ class MyAppState extends State<MyApp> {
               Question(questionText: questions[0]),
               ElevatedButton(onPressed: changeTitle, child: Text('Answer 1')),
               ElevatedButton(
-                  onPressed: () => {print('press answer 2')},
-                  child: Text('Answer 2')),
+                onPressed: () => {print('press answer 2')},
+                child: Text('Answer 2'),
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.brown)),
+              ),
               ElevatedButton(
                   onPressed: () {
                     print('pressed answer 3');
                   },
                   child: Text('Answer 3')),
+              Answer(onPressedFunction: changeTitleA),
             ],
           )),
     );
