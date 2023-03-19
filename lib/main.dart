@@ -18,6 +18,21 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   var questions = ['aaaa', 'bbbbb'];
 
+  var list = [
+    {
+      'q': 'q1',
+      'a': ['a1', 'a2', 'a3', 'a4']
+    },
+    {
+      'q': 'q2',
+      'a': ['a1', 'a2', 'a3', 'a4']
+    },
+    {
+      'q': 'q3',
+      'a': ['a1', 'a2', 'a3', 'a4']
+    },
+  ];
+
   var title = "Application Title A";
 
   void changeTitle() {
@@ -57,7 +72,14 @@ class MyAppState extends State<MyApp> {
                     print('pressed answer 3');
                   },
                   child: Text('Answer 3')),
-              Answer(onPressedFunction: changeTitleA),
+              Answer(
+                onPressedFunction: changeTitleA,
+                answerString: 'xxx',
+              ),
+              //list[0]['a']
+              ...(list[0]['a'] as List<String>).map((e) {
+                return Answer(onPressedFunction: changeTitleA, answerString: e);
+              }).toList()
             ],
           )),
     );
